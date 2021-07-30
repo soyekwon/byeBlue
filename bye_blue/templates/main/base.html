@@ -7,12 +7,18 @@
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+       
+
+
         <link rel="stylesheet" href="static/bootstrap/css/bootstrap.css">
     
     </head>
     <body style="background-color: #FFDDDD; color: #544E54;"> 
         <script type="text/javascript" src="static/bootstrap/js/bootstrap.js"></script>
-        <div class="top">
+        <div style="height: 132px;"class="top">
 
             <ul class="nav">
                 <li class="nav-item">
@@ -22,33 +28,43 @@
                   <a style="color: #7D757D;" class="nav-link" href="#">Watching</a>
                 </li>
                 <li class="nav-item">
-                  <a style="color: #7D757D;"class="nav-link" href="#">Oline_Class</a>
+                  <a style="color: #7D757D;"class="nav-link" href="{% url 'online_class:index' %}">Oline_Class</a>
                 </li>
                 <li class="nav-item">
                   <a style="color: #7D757D;" class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
 
+<<<<<<< HEAD:bye_blue/templates/home.html
                 <button  type="button" onclick = "location.href = 'account/login'" style="margin-left: 660px; margin-top: 10px;"class="btn btn-outline-secondary">Log in</button>
                 <button type="button" onclick = "location.href = 'account/signup'" style="margin-left: 20px; margin-top: 10px;" class="btn btn-outline-secondary">Sign up</button>
                 <button type="button" onclick = "location.href = 'account/logout'" stype="margin-left: 20px; margin-top: 10px;" class="btn btn-outline-secondary">Log out</button>
+=======
+                <button style="margin-left: 560px; margin-top: 10px;" type="button" class="btn btn-outline-secondary">Log_in</button>
+                <button style="margin-left: 5px; margin-top: 10px;" type="button" class="btn btn-outline-secondary">Sign_in</button>
+>>>>>>> kwonsoye:bye_blue/templates/main/base.html
             </ul>
             
             <br>
             
         </div>
-        <div class="middle">
-            <br><br><br><br><br><br>
-            <h2> &nbsp;&nbsp; bye_BluE!<br><br>
-                
-                &nbsp;&nbsp;The byeBlue website is a website created to overcome the depression caused by people being unable to <br>
-                &nbsp;&nbsp;go outside due to the corona virus.
-            <br><br>
-            &nbsp;&nbsp; the list of this website consists of Home_training, watchng, online_class, and psychological test.
-            
-            </h2>
-            <br>
 
+
+        <div style="height: 780px;" class="middle">
            
-        </div>    
+        </div>   
+        
+        
+        <div style="height: 50px;" class="bottom">
+
+          
+            <a style="margin-left: 720px; color: #7D757D;" href="https://github.com/soyekwon"><i class="icon ion-social-github">&nbsp;&nbsp;developer_soye</i></a>
+            <a style="margin-left: 60px; color: #7D757D;" href="https://github.com/sujin-create"><i class="icon ion-social-github">&nbsp;&nbsp;developer_sujin</i></a>
+            
+          
+          
+
+         
+        </div>
+
     </body>
 </html>
