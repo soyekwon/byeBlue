@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'bye_blue',
     'main',
     'account',
+    'online_class',
 
 ]
 
