@@ -1,0 +1,40 @@
+
+<!--login에서 check-->
+<!--공백입력해도 id를 인정하면 안 됨 => trim사용 -->
+<script>
+    function checkmemb(){
+        
+       
+        if($("input[name=email]").val() == ""){
+            alert("ID[email] 입력은 필수입니다")
+            $("input[name=id]").focus();
+            return false;
+        }
+        if($("input[name=pw]").val() == ""){
+            alert("PW 입력은 필수입니다");
+            $("input[name=pw]").focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+<div style="display:flex; justify-content: center; align-items:center; min-height:100vh; background-color: pink;">
+    
+    <form name = "form" action="{% url 'login' %}" method = "POST" onsubmit = "return checkmemb();">
+    {% csrf_token %}
+    <div>
+        <p>{{error}}</p>
+    </div>
+    <div class="form-group">
+        <label for="email">ID[email]</label>
+        <input class = "form-control" type="text" name="email" required id="email">
+    </div>
+    <div class="form-group">
+        <label for="pw">PW</label>
+        <input class = "form-control" type="password" name="pw" required id="pw">
+    </div>
+    <p></p>
+    <div class="text-center"><input type ="submit" value = "login" class = "btn btn-primary"></div>
+    </form>
+
+</div>

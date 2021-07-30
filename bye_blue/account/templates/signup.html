@@ -1,0 +1,65 @@
+    
+<script language = "javascript">
+    function checkjoin(){
+        if($("input[name=name]").val() == ""){
+            alert("사용자명 필수입니다");
+            $("input[name=name]").focus();
+            return false;
+        }
+        if($("input[name=email]").val() == ""){
+            alert("ID[email] 입력은 필수입니다");
+            $("input[name=email]").focus();
+            return false;
+        }
+        if($("input[name=PW]").val() == ""){
+            alert("PW 설정은 필수입니다");
+            $("input[name=PW]").focus();
+            return false;
+        }
+        if($("input[name=PW2]").val() == ""){
+            alert("비밀번호 확인을 위해 PW2 입력은 필수입니다");
+            $("input[name=PW2]").focus();
+            return false;
+        }
+        if($("input[name=PW2]").val() != $.trim("input[name=PW]").val() ){
+            alert("비밀번호가 일치하지 않습니다.");
+            $("input[name=PW2]").select().focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+
+<div style="display:flex; background-color: pink; justify-content: center; align-items:center; min-height:100vh; ">
+
+    <form name = "signup_form" action="{% url 'signup' %}" method = "POST" onsubmit = "return checkjoin()" >
+        {% csrf_token %}
+        
+        <div>
+            <p>{{error}}</p>
+        </div>
+
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input class="form-control" type = "text" name = "name" required id="name">
+        </div>
+        <div class="form-group">
+            <label for="email">ID[email]</label>
+            <input class="form-control" type = "text" name = "email"  required id="eamil">
+        </div>
+        <div class="form-group">
+            <label for="PW">PW</label>
+            <input class="form-control" type = "password" name = "PW"  required id="PW">
+        </div>
+        <div class="form-group">
+            <label for="PW2">PW check</label>
+            <input class="form-control" type = "password" name = "PW2" required id="PW2">
+        </div>
+        <p></p>
+        <div class = "text-center"><input class="btn btn-primary" type = "submit" value ="signup"></div>
+        
+    
+    </form>
+</div>
+
