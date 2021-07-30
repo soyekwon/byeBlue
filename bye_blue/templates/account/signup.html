@@ -33,7 +33,7 @@
 
 <div style="display:flex; background-color: pink; justify-content: center; align-items:center; min-height:100vh; ">
 
-    <form name = "signup_form" action="{% url 'signup' %}" method = "POST" onsubmit = "return checkjoin()" >
+    <form name = "signup_form" action="{% url 'account:signup' %}" method = "POST" onsubmit = "return checkjoin()" >
         {% csrf_token %}
         
         <div>

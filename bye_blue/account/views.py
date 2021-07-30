@@ -13,10 +13,10 @@ def signup(request):
 
         if name =="" or email =="" or pw =="" or pw2 =="":
             res_data['error'] = "입력되지 않은 값이 있습니다"
-            return render(request,"signup.html",res_data)
+            return render(request,"account/signup.html",res_data)
         if pw != pw2:
             res_data['error'] = "비밀번호가 일치하지 않습니다"
-            return render(request,"signup.html",res_data)
+            return render(request,"account/signup.html",res_data)
 
         #중복가입 방지 -> 다시 생각해봐야함
         member = User
@@ -24,14 +24,14 @@ def signup(request):
 
         if member.objects.filter(email=email).exists():
             res_data['error'] = "이미 가입된 이메일[ID]입니다"
-            return render(request,"signup.html",res_data)
+            return render(request,"account/signup.html",res_data)
         else:
             member(name = name, email = email, pw = pw).save()
             return redirect('/')
   
 
     else:
-        return render(request,"signup.html")
+        return render(request,"account/signup.html")
 
 
 
@@ -47,7 +47,7 @@ def login(request):
 
         if data is None:
             res_data['error']="회원정보를 찾을 수 없습니다"
-            return render(request,'login.html',res_data)
+            return render(request,'account/login.html',res_data)
         else:
             if data.pw == pw:
                 request.session['email'] = email
@@ -56,9 +56,9 @@ def login(request):
                 return redirect('/')
             else:
                 res_data['error'] = "비밀번호가 일치하지 않습니다"
-                return render(request,"login.html",res_data)
+                return render(request,"account/login.html",res_data)
     else:
-        return render(request,"login.html")
+        return render(request,"account/login.html")
 
 
 def logout(request):

@@ -14,8 +14,7 @@ from pathlib import Path
 import os;
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -57,10 +56,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'bye_blue.urls'
 
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        "DIRS": [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'bye_blue.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
@@ -125,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIR = [
-    BASE_DIR / 'static',
+    os.path.join(BASE_DIR, "static"),
 ]
 
 

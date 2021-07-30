@@ -23,6 +23,6 @@ import main.urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.views.index),
-    path('account/', include('account.urls')),
+    path('account/', include('account.urls',  namespace='account')),
     path("online_class/", include('online_class.urls', namespace='online_class')),
 ]
