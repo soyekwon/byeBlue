@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bye_blue',
     'main',
+    'online_class',
 
 ]
 
