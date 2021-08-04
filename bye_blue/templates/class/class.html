@@ -2,11 +2,18 @@
 {% block content %}
 
 
+    <div>
 
+        {% for object in online_objects %}
+            <br>
+            <h3>{{object.title}}</h3>
+            <p> {{object.pub_date}} </p>
+            <p> {{object.summary}} </p>
+        {% endfor %}
 
+    </div>
 
-    여기는 온라인 클래스 페이지
-    
+   
        
         
         

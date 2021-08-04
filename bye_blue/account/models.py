@@ -7,6 +7,8 @@ class User(models.Model):
     pw = models.CharField(max_length = 20, verbose_name="비밀번호")
     joindate = models.DateTimeField(auto_now_add= True, verbose_name="계정 생성시간")
 
+    def __str__(self):
+        return self.name
 
     class Meta:
         db_table = 'user'
