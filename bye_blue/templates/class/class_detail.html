@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}  
+{% block content %}
+
+
+
+    <div>
+
+        
+        <br>
+        <h3>{{online_object.title}}</h3>
+        <p> {{online_object.pub_date}} </p>
+        <p> {{online_object.content}} </p>
+        <br>
+        <br>
+        
+
+    </div>
+
+    <button style="margin-left: 10px;"class="btn btn-outline-secondary">
+        <a href="{% url 'online_class:edit' online_object.id %}">수정하기</a>
+    </button>
+
+   
+       
+        
+        
+
+    
+
+{% endblock %}
