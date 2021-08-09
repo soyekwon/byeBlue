@@ -16,9 +16,14 @@
 
     </div>
 
+    {% if request.user ==  online_object.writer %}
     <button style="margin-left: 10px;"class="btn btn-outline-secondary">
         <a href="{% url 'online_class:edit' online_object.id %}">수정하기</a>
     </button>
+    <button style="margin-left: 10px;"class="btn btn-outline-secondary">
+        <a href="{% url 'online_class:delete' online_object.id %}">삭제하기</a>
+    </button>
+    {% endif %}
 
    
        
