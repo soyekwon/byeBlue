@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}  
+{% block content %}
+
+
+
+    <div>
+
+        <form method="POST" class="post-form my-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+        <button type="submit">작성!</button>
+
+
+        </form>
+
+    </div>
+
+    <button style="margin-left: 10px;"class="btn btn-outline-secondary">
+        <a href="{% url 'online_class:edit' online_object.id %}">저장하기</a>
+    </button>
+
+   
+       
+        
+        
+
+    
+
+{% endblock %}

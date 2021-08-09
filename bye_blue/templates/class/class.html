@@ -1,17 +1,24 @@
 {% extends 'main/base.html' %}  
 {% block content %}
 
+    <button style="margin-left: 1200px;"class="btn btn-outline-secondary">
+     <a href="{% url 'online_class:write' %}">글쓰기</a>
+    </button>
 
     <div>
 
         {% for object in online_objects %}
             <br>
+            <a href="{% url 'online_class:detail' object.id %}">
             <h3>{{object.title}}</h3>
+            <h5>{{object.writer.username}}</h5>
             <p> {{object.pub_date}} </p>
             <p> {{object.summary}} </p>
+            </a>
         {% endfor %}
 
     </div>
+
 
    
        

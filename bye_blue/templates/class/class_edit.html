@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}  
+{% block content %}
+
+
+    <div>
+        <form action="{% url 'online_class:edit' %}" mothod="POST">
+            {% csrf_token %}
+			<h3>제목 : <input type="text" name="title"> </h3>
+			<p>내용 : <textarea name="content" id="" cols="30" rows="10">
+            </textarea></p>
+
+	
+
+            <button type="submit">수정!</button>
+        </form>
+
+        
+
+    </div>
+
+   
+       
+        
+        
+
+    
+
+{% endblock %}
