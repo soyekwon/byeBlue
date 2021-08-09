@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.db import models
 from account.models import User
 from .forms import OnlineForm
+from django.contrib import messages
 
 
 def index(request):
@@ -37,12 +38,33 @@ def create(request):
 
 def edit(request, id):
     edit_object = get_object_or_404(Online, pk = id)
-    edit_object.title = request.POST.get('title', '')
-    edit_object.content = request.POST.get('content', '')
-    edit_object.pub_date = timezone.datetime.now()
-    edit_object.save()
 
-    return redirect(str(edit_object.id)+'/edit')
+    if request.method == 'POST':
+        form = OnlineForm(request.POST, instance=edit_object)
+        if form.is_valid():
+            edit_object = form.save(commit=False)
+            edit_object.writer = request.user
+            edit_object.pub_date = timezone.now()
+            edit_object.save()
+            return redirect('online_class:index')
+        
+    else:
+        form = OnlineForm(instance=edit_object)
+    
+    context = {'form':form}
+    return render(request, 'class/class_write.html', context)
+
+def delete(request, id):
+    delete_object = get_object_or_404(Online, pk = id)
+
+    if request.user != delete_object.writer:
+        messages.error(request, "삭제권한이 없습니다.")
+        return redirect('online_class:detail', online_id = delete_object.id)
+    delete_object.delete()
+    return redirect('online_class:index')
+
+    
+    
 
 
 
