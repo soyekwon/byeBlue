@@ -1,4 +1,6 @@
-    
+{% extends 'account/base.html' %}  
+{% block content %}
+
 <script language = "javascript">
     function checkjoin(){
         if($("input[name=name]").val() == ""){
@@ -42,19 +44,19 @@
 
         <div class="form-group">
             <label for="name">이름</label>
-            <input class="form-control" type = "text" name = "name" required id="name">
+            <input class="form-control" type = "text" name = "name" >
         </div>
         <div class="form-group">
             <label for="email">ID[email]</label>
-            <input class="form-control" type = "text" name = "email"  required id="eamil">
+            <input class="form-control" type = "text" name = "email"  >
         </div>
         <div class="form-group">
             <label for="PW">PW</label>
-            <input class="form-control" type = "password" name = "PW"  required id="PW">
+            <input class="form-control" type = "password" name = "PW"  >
         </div>
         <div class="form-group">
             <label for="PW2">PW check</label>
-            <input class="form-control" type = "password" name = "PW2" required id="PW2">
+            <input class="form-control" type = "password" name = "PW2" >
         </div>
         <p></p>
         <div class = "text-center"><input class="btn btn-primary" type = "submit" value ="signup"></div>
@@ -63,3 +65,4 @@
     </form>
 </div>
 
+{% endblock %}

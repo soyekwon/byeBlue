@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from django.http import JsonResponse
 from .models import User
 
 def signup(request):
@@ -34,21 +33,20 @@ def signup(request):
         return render(request,"account/signup.html")
 
 
-
 def login(request):
     if request.method == "POST":
         email=request.POST["email"]
         pw =request.POST["pw"]
 
         members= User
-        data = members.objects.get(email = email)
-        print(data)
         res_data ={}
 
-        if data is None:
+        
+        if not members.objects.filter(email=email).exists():
             res_data['error']="회원정보를 찾을 수 없습니다"
             return render(request,'account/login.html',res_data)
         else:
+            data = members.objects.get(email = email)
             if data.pw == pw:
                 request.session['email'] = email
                 request.session['name'] = data.name
@@ -64,8 +62,9 @@ def login(request):
 def logout(request):
     #session을 지워주면 됨
     try:#로그아웃했을때 로그인 안 되도록
-        if request.session.get('User'):
-            del(request.session['user'])
+        if request.session.get('email'):
+            del request.session['email']
+            #return render(request,"account/login.html")
     except:
         pass
     return redirect('/')
