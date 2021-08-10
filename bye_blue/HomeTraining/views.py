@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import HT
+from .models import *
 from django.core.paginator import Paginator
 from account.models import User
 from django.http import HttpResponse
@@ -27,21 +27,22 @@ def edit(request,pk):
             else:
                 res['error']="글 수정 권한이 없습니다"
                 return redirect("/HomeTraining/list")
-    if request.method == "POST":
+    else:
         part = request.POST['part']
-        title = request.POST["title"]
-        contents = request.POST["contents"]
-    
-        ht_board = get_object_or_404(HT,id = pk)
-        if ht_board is None:
-            return render(request,'HomeTraining/list.html')        
-        if request.session.get("name") == ht_board.writer:
-            writer = ht_board.writer
-            ht_board(part = part, title = title, contents = contents,writer=writer).save()
-            res={}
+        title = request.POST['title']
+        contents = request.POST['contents']
+        board = HT.objects.get(id = pk)
 
-            res['message']="수정이 완료되었습니다"
-            return redirect('/HomeTraining/view/'+pk,res)
+        if request.session.get("name") == board.writer:
+            name = board.writer
+            board.part = part
+            board.title=title
+            board.contents = contents
+            board.name=name
+            board.save()
+            res={}
+            res['error']="글 수정 완료"
+            return redirect('/HomeTraining/view/'+str(pk)) 
         else:
             res={}
             res['error']="글 수정 권한이 없습니다"
@@ -68,13 +69,18 @@ def view(request,pk):
     board = get_object_or_404(HT,id = pk)
     context['board']=board
     context['session_name']=request.session['name']
+
+    comment_board = HT_COMMENT.objects.all().order_by('-write_date')
+    context['comment']=comment_board
+   
     return render(request,"HomeTraining/view.html",context)
+
+
 
 
 def write(request):
     if request.method == "POST":
         part = request.POST['part']
-        print(part)
         title = request.POST['title']
         contents = request.POST['contents']
         name = request.session.get('name')
@@ -88,3 +94,30 @@ def write(request):
     else:
         return render(request,'HomeTraining/write.html')
 
+def comment(request,pk):
+    if request.method == "POST":
+        contents = request.POST['contents']
+        board = get_object_or_404(HT,id=pk)
+        writer = request.session['name']
+
+        ht_comment = HT_COMMENT()
+        
+        ht_comment.board = board
+        ht_comment.contents =contents
+        ht_comment.writer = writer
+        ht_comment.save()
+
+        return redirect('/HomeTraining/view/'+str(pk))
+    else:
+        res={}
+        res['PK']=pk
+        return render(request,'HomeTraining/comment.html',res)
+
+        
+        
+
+        
+
+        
+
+        

@@ -1,4 +1,4 @@
-{% extends 'account/base.html' %}  
+{% extends 'main/base.html' %}  
 {% block content %}
 <!--login에서 check-->
 <!--공백입력해도 id를 인정하면 안 됨 => trim사용 -->
@@ -18,13 +18,11 @@
     }
 </script>
 
-<div style="display:flex; justify-content: center; align-items:center; min-height:100vh; background-color: pink;">
+<div style="display:flex; justify-content: center; align-items:center; min-height:100vh;">
     
     <form name = "form" action="{% url 'account:login' %}" method = "POST" onsubmit = "return checkmemb();">
     {% csrf_token %}
-    <div>
-        <p>{{error}}</p>
-    </div>
+
     <div class="form-group">
         <label for="email">ID[email]</label>
         <input class = "form-control" type="text" name="email" >

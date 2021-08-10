@@ -9,7 +9,19 @@ class HT(models.Model):
     write_date = models.DateTimeField(auto_now_add= True, verbose_name="본문 생성시간")
 
     def __str__(self):
-        return self.title
+        return str(self.id)
 
     class Meta:
         db_table = 'HT_board'
+
+class HT_COMMENT(models.Model):
+    board = models.ForeignKey(HT, on_delete=models.CASCADE, null=True)
+    contents = models.TextField(verbose_name="댓글내용")
+    writer = models.CharField(max_length=30, verbose_name="댓글 작성이")
+    write_date = models.DateTimeField(auto_now_add= True, verbose_name="댓글 생성시간")
+    
+    def __str__(self):
+        return self.writer
+
+    class Meta:
+        db_table = 'HT_COM_board'

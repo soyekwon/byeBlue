@@ -4,19 +4,18 @@
 <h3 style = "text-align: center;"> 홈트레이닝 게시판</h3>
 {%if name %}
 <p>안녕하세요! {{name}}님, 오늘은 운동으로 건강한 생활 어떠세요?
-    <button class="btn btn-outline-secondary">
+    <!-- <button class="btn btn-outline-secondary">
         <a style="color:#7D757D;" href ="{% url 'account:logout' %}">log out</a>
-    </button>
+    </button> -->
 </p>
 {% else %}
 <p>안녕하세요! 오늘은 운동으로 건강한 생활 어떠세요?</p>
 {% endif %}
 
-
 <table class = "table table-hover text-center">
     <thead class="thead-dark">
         <tr>
-            <td>부위</td>
+            <td>운동부위</td>
             <td>제목</td>
             <td>날짜</td>
             <td>이름</td>
@@ -61,7 +60,15 @@
       <a class="page-link" href="#">Next</a>
     </li>
     {% endif %}
-  </ul>
+</ul>
+
+<script>
+  function no_name_add_post(){
+    alert("로그인이 필요합니다");
+  }
+</script>
+
+
 
 {% if name %}
 <div class="text-center">
@@ -70,7 +77,9 @@
     </button>
 </div>
 {% else %}
-<p>글 작성을 원하신다면 로그인이 필요합니다</p>
+<div class="text-center">
+  <button style="color:#7D757D;" class="btn btn-outline-secondary" onclick="no_name_add_post();">add post</button>
+</div>
 {% endif %}
 
 

@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}  
+{% block content %}
+
+<script>
+    function checkpost(){
+
+        if($("input[name=contents]").val() == ""){
+            alert("내용이 입력되지 않았습니다");
+            $("input[name=contents]").focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<form name = "form" method = "POST" action = "/HomeTraining/comment/{{PK}}" onsubmit="return checkpost()">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="contents">contents</label>
+        <textarea class="form-control" name = "contents" >{{comment.contents}}</textarea>
+    </div>
+    <p></p>
+    <div class="text-center">
+        <input class="btn btn-primary btn-sm" type ="submit" vlaue="addpost">
+    </div>
+    
+</form>
+
+{% endblock %}

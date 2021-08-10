@@ -26,4 +26,5 @@ urlpatterns = [
     path('account/', include('account.urls',  namespace='account')),
     path("online_class/", include('online_class.urls', namespace='online_class')),
     path("HomeTraining/",include('HomeTraining.urls',namespace="HomeTraining")),
+    path("OTT/",include('OTT.urls',namespace="OTT")),
 ]

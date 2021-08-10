@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'main',
     'account',
     'online_class',
-    'HomeTraining'
+    'HomeTraining',
+    'OTT',
 
 ]
 
@@ -113,11 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ko-kr'
 
-<<<<<<< HEAD
+
 TIME_ZONE = 'Asia/Seoul'
-=======
-TIME_ZONE = "Asia/Seoul"
->>>>>>> 0fc20bea0210166491bca80f230e0b3f69e54741
+
 
 USE_I18N = True
 

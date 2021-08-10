@@ -10,5 +10,6 @@ urlpatterns = [
     path('view/<int:pk>',HomeTraining.views.view,name="view"),
     path('write/',HomeTraining.views.write,name="write"),
     path('delete/<int:pk>',HomeTraining.views.delete,name="delete"),
+    path('comment/<int:pk>',HomeTraining.views.comment,name="comment"),
 
 ]
