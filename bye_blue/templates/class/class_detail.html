@@ -16,7 +16,7 @@
 
     </div>
 
-    {% if request.user ==  online_object.writer %}
+    {% if session_name ==  online_object.writer %}
     <button style="margin-left: 10px;"class="btn btn-outline-secondary">
         <a href="{% url 'online_class:edit' online_object.id %}">수정하기</a>
     </button>

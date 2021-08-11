@@ -1,23 +1,44 @@
 {% extends 'main/base.html' %}  
 {% block content %}
 
+    {% if name %}
     <button style="margin-left: 1200px;"class="btn btn-outline-secondary">
      <a href="{% url 'online_class:write' %}">글쓰기</a>
     </button>
+    {% else %}
+    <p>글 작성을 원하신다면 로그인이 필요합니다</p>
+    {% endif %}
 
-    <div>
+    <div class="container my-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th><span class="iconify" data-icon="emojione:cherries"></span> 제목 </th>
+                <th><span class="iconify" data-icon="emojione:face-blowing-a-kiss"></span> 이름</th>
+                <th><span class="iconify" data-icon="emojione:carrot"></span> 날짜</th>
+            </tr>
+            </thead>
 
-        {% for object in online_objects %}
-            <br>
-            <a href="{% url 'online_class:detail' object.id %}">
-            <h3>{{object.title}}</h3>
-            <h5>{{object.writer.username}}</h5>
-            <p> {{object.pub_date}} </p>
-            <p> {{object.summary}} </p>
-            </a>
-        {% endfor %}
+            <tbody>
+              
+                {% for object in objects %}
 
+                <tr style="filter: hue-rotate(120deg);
+              animation: animate 10s linear infinite;" onclick="location.href='/online_class/{{ object.id }}'">
+                      <td>{{object.title}}</td>
+                      <td>{{object.writer}}</td>
+                      <td> {{object.pub_date}} </td>
+                
+               </tr>
+
+                {% endfor %}
+              
+            </tbody>
+        </table>
     </div>
+
+
+ 
 
 
    

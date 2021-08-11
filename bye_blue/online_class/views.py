@@ -8,12 +8,20 @@ from django.contrib import messages
 
 
 def index(request):
-    online_object = Online.objects.all()
-    return render(request, 'class/class.html', {'online_objects' : online_object})
+    list_object = {}
+    if request.session.get('email'):
+        list_object['name'] = request.session['name']
+
+    online_object = Online.objects.all().order_by('-id')
+    list_object['objects'] = online_object
+    return render(request, 'class/class.html', list_object)
 
 def detail(request, id):
+    context={}
     online_object = get_object_or_404(Online, pk = id)
-    return render(request, "class/class_detail.html", {'online_object' : online_object})
+    context['online_object']=online_object
+    context['session_name'] = request.session['name']
+    return render(request, "class/class_detail.html", context)
 
 def write(request):
     return render(request, "class/class_write.html")
@@ -24,7 +32,7 @@ def create(request):
         form = OnlineForm(request.POST)
         if form.is_valid():
             online = form.save(commit=False)
-            online.writer = request.user
+            online.writer = request.session.get('name')
             online.pub_date = timezone.now()
             online.save()
             return redirect('online_class:index')
@@ -43,7 +51,7 @@ def edit(request, id):
         form = OnlineForm(request.POST, instance=edit_object)
         if form.is_valid():
             edit_object = form.save(commit=False)
-            edit_object.writer = request.user
+            edit_object.writer = request.session.get('name')
             edit_object.pub_date = timezone.now()
             edit_object.save()
             return redirect('online_class:index')
@@ -56,10 +64,6 @@ def edit(request, id):
 
 def delete(request, id):
     delete_object = get_object_or_404(Online, pk = id)
-
-    if request.user != delete_object.writer:
-        messages.error(request, "삭제권한이 없습니다.")
-        return redirect('online_class:detail', online_id = delete_object.id)
     delete_object.delete()
     return redirect('online_class:index')
 
