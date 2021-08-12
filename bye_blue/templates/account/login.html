@@ -18,6 +18,14 @@
     }
 </script>
 
+{% if error %}
+<script>
+    var a = "{{error}}";
+    alert(a);
+</script>
+{% endif %}
+
+
 <div style="display:flex; justify-content: center; align-items:center; min-height:100vh;">
     
     <form name = "form" action="{% url 'account:login' %}" method = "POST" onsubmit = "return checkmemb();">
