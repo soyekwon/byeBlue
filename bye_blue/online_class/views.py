@@ -1,19 +1,28 @@
+from django.core import paginator
 from django.shortcuts import redirect, render, get_object_or_404
-from .models import Online
+from django.core.paginator import Paginator
 from django.utils import timezone
 from django.db import models
+from .models import Online
 from account.models import User
 from .forms import OnlineForm
-from django.contrib import messages
+
 
 
 def index(request):
+    
+    
+
     list_object = {}
     if request.session.get('email'):
         list_object['name'] = request.session['name']
 
     online_object = Online.objects.all().order_by('-id')
     list_object['objects'] = online_object
+    page = request.GET.get('page', '1')
+    paginator = Paginator(online_object, 5)
+    list_object['page'] = paginator.get_page(page)
+
     return render(request, 'class/class.html', list_object)
 
 def detail(request, id):
