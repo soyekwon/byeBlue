@@ -72,7 +72,7 @@ def view(request, pk):
     context["board"] = board
     context["session_name"] = request.session["name"]
 
-    comment_board = OTT_COMMENT.objects.all().order_by("-write_date")
+    comment_board = OTT_COMMENT.objects.filter(board=pk)
     context["comment"] = comment_board
 
     return render(request, "OTT/view.html", context)
