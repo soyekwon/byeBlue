@@ -13,30 +13,31 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='HT',
+            name='OTT',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('part', models.CharField(max_length=30, verbose_name='키워드')),
+                ('genre', models.CharField(max_length=30, verbose_name='장르')),
                 ('title', models.CharField(max_length=30, verbose_name='제목')),
                 ('contents', models.TextField(verbose_name='내용')),
                 ('writer', models.CharField(max_length=30, null=True, verbose_name='작성자')),
                 ('write_date', models.DateTimeField(auto_now_add=True, verbose_name='본문 생성시간')),
+                ('funny', models.CharField(max_length=30, null=True, verbose_name='평가')),
             ],
             options={
-                'db_table': 'HT_board',
+                'db_table': 'OTT_board',
             },
         ),
         migrations.CreateModel(
-            name='HT_COMMENT',
+            name='OTT_COMMENT',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('contents', models.TextField(verbose_name='댓글내용')),
                 ('writer', models.CharField(max_length=30, verbose_name='댓글 작성이')),
                 ('write_date', models.DateTimeField(auto_now_add=True, verbose_name='댓글 생성시간')),
-                ('board', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='HomeTraining.ht')),
+                ('board', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='OTT.ott')),
             ],
             options={
-                'db_table': 'HT_COM_board',
+                'db_table': 'OTT_COM_board',
             },
         ),
     ]
