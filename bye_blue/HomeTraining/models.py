@@ -8,6 +8,7 @@ class HT(models.Model):
     contents = models.TextField(verbose_name="내용")
     writer = models.CharField(max_length=30, verbose_name="작성자", null=True)
     write_date = models.DateTimeField(auto_now_add=True, verbose_name="본문 생성시간")
+    images = models.ImageField(upload_to="images", null=True)
 
     def __str__(self):
         return str(self.id)

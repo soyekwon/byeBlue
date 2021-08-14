@@ -4,8 +4,6 @@ from django.core.paginator import Paginator
 from account.models import User
 from django.http import HttpResponse
 
-# Create your views here.
-
 
 def delete(request, pk):
     ht_board = get_object_or_404(HT, id=pk)
@@ -84,11 +82,14 @@ def write(request):
         title = request.POST["title"]
         contents = request.POST["contents"]
         name = request.session.get("name")
+        images = request.FILES["images"]
 
         # user = User.objects.get(pk = name)# ->writer=user로 넘길때 사용
         # print(user)
         ht_board = HT
-        ht_board(part=part, title=title, contents=contents, writer=name).save()
+        ht_board(
+            part=part, title=title, contents=contents, writer=name, images=images
+        ).save()
 
         # for img in request.FILES.getlist("imgs"):
         #     photo = Photo()

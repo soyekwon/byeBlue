@@ -19,6 +19,8 @@ from django.urls import path, include
 from main import views
 from online_class import views
 import main.urls
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -28,4 +30,4 @@ urlpatterns = [
     path("online_class/", include("online_class.urls", namespace="online_class")),
     path("HomeTraining/", include("HomeTraining.urls", namespace="HomeTraining")),
     path("OTT/", include("OTT.urls", namespace="OTT")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

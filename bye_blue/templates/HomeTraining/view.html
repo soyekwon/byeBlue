@@ -15,9 +15,15 @@
                 <td class="text-center">작성자 : {{board.writer}}</td>
             </tr>
             <tr>
-                <td><div style="min-height:300px;">{%autoescape off %}{{board.contents}}{% endautoescape%}</div></td>
+                <td><div style="min-height:100;">{%autoescape off %}{{board.contents}}{% endautoescape%}</div></td>
             </tr>
-            
+            <tr>
+                <td class="text-center">
+                {% if board.images %}
+                    <img src="{{board.images.url}}" width="300" height="300">
+                {% endif %}
+                </td>
+            </tr>
         </tbody>
     </table>
     
