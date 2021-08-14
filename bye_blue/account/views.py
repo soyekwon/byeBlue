@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import User
+from .validation import *
 
 def signup(request):
     if request.method == "POST":
@@ -16,14 +17,22 @@ def signup(request):
         if pw != pw2:
             res_data['error'] = "비밀번호가 일치하지 않습니다"
             return render(request,"account/signup.html",res_data)
+        if "false_email"==validate_email(email):
+            res_data['error'] = "이메일 형식이 올바르지 않습니다"
+            return render(request,"account/signup.html",res_data)
+        if "false_pw" == validate_password(pw):
+            res_data['error'] = "비밀번호는 6자리를 넘겨야합니다"
+            return render(request,"account/signup.html",res_data)
 
         #중복가입 방지 -> 다시 생각해봐야함
         member = User
-        print(type(member))
 
         if member.objects.filter(email=email).exists():
             res_data['error'] = "이미 가입된 이메일[ID]입니다"
             return render(request,"account/signup.html",res_data)
+        if member.objects.filter(name=name).exists():
+            res_data['error'] = "이미 있는 닉네임입니다"
+            return render(request, "account/signup.html",res_data)
         else:
             member(name = name, email = email, pw = pw).save()
             return redirect('/')

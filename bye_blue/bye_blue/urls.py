@@ -15,15 +15,17 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include 
+from django.urls import path, include
 from main import views
 from online_class import views
 import main.urls
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', main.views.index),
-    path('account/', include('account.urls',  namespace='account')),
-    path("online_class/", include('online_class.urls', namespace='online_class')),
-    path("HomeTraining/",include('HomeTraining.urls',namespace="HomeTraining")),
+    path("admin/", admin.site.urls),
+    path("", main.views.index),
+    path("account/", include("account.urls", namespace="account")),
+    path("online_class/", include("online_class.urls", namespace="online_class")),
+    path("HomeTraining/", include("HomeTraining.urls", namespace="HomeTraining")),
+    path("OTT/", include("OTT.urls", namespace="OTT")),
 ]
