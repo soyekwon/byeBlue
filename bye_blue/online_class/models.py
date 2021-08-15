@@ -16,6 +16,14 @@ class Online(models.Model):
     def summary(self):
         return self.content[:100]
 
+class Comment(models.Model):
+    board = models.ForeignKey(Online, on_delete=models.CASCADE, null=True)
+    writer = models.CharField(max_length=30, verbose_name="작성자",null=True)
+    text = models.CharField(max_length=100, null=True)
+    pub_date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.text
 
 
 

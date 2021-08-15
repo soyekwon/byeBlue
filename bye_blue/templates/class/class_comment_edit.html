@@ -1,0 +1,80 @@
+{% extends 'main/base.html' %}  
+{% block content %}
+
+
+
+    <div>
+
+        
+        <br>
+        <h3>{{board.title}}</h3>
+        <p> {{board.pub_date}} </p>
+        <p> {{board.content}} </p>
+        <br>
+        <br>
+        
+
+    </div>
+
+    {% if session_name ==  board.writer %}
+    <button style="margin-left: 10px;"class="btn btn-outline-secondary">
+        <a href="{% url 'online_class:edit' online_object.id %}">수정하기</a>
+    </button>
+    <button style="margin-left: 10px;"class="btn btn-outline-secondary">
+        <a href="{% url 'online_class:delete' online_object.id %}">삭제하기</a>
+    </button>
+    {% endif %}
+
+    <div class='comment_wrapper'>
+        <div style="margin-top:10%;"class='comment_head'>
+          댓글수정 <i class="iconify" data-icon="akar-icons:comment"></i>
+        </div>
+
+            {% for comment in comments %}
+            {% if comment.id == my_comment.id %}
+            <div class="card my-4">
+              <div class="comment_form_head">댓글 수정</div>
+              <div class="comment_form_body">
+                  <form method="POST">
+                      {% csrf_token %}
+                      <div class="form-group">{{ comment_form }}</div>
+                      <button type="submit" class="btn btn-dark">수정 완료</button>
+                  </form>
+              </div>
+            </div>
+              {% else %}
+              <div class='comment_box'>
+                {{comment.writer}} : {{comment.text}}
+                <p style="border-style: groove;border-color: #1465AA;border-width: thin;"></p>
+              </div>
+            {% endif %}
+            {% endfor %}
+         
+          
+        </div>
+        
+    
+        </div>
+    
+        
+    </div>
+
+
+    {% if session_name %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div style = "margin-top: 5px; float:left;"class="form-group">{{ comment_form }}</div>
+        <button style = "margin-left: 5px; float:left;" type="submit" class = "btn btn-outline-secondary">작성!</button>
+    </form>
+
+    {% endif %}
+
+   
+       
+        
+        
+
+    
+
+{% endblock %}

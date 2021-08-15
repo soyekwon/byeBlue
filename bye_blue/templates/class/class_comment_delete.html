@@ -1,0 +1,32 @@
+{% extends "main/base.html" %}
+{% block content %}
+
+
+
+
+
+
+    <div style="text-align:center;align-items: center;align-content: center;padding-bottom:5%;"class="ArticleContentBox" role='alert'>
+
+      <div>정말로 해당 댓글을 지우실 건가요?
+      </div>
+      
+      <div style="margin-left:37%;margin-top:5%;margin-bottom: 5%;">
+        <div style="width:20%;float:left;">
+        <form action="" method ="post">
+          {% csrf_token %}
+          <input class="btn btn-dark" type="submit" value="네 확실합니다.">
+        </form>
+        </div>
+        <div style="width:20%;float:left;" >
+        <button class="btn btn-dark">
+        <a style="color:white;"href="{% url 'online_class:detail' board.id %}">아니오</a>
+        </button>
+      </div>
+    </div>
+    </div>
+
+
+
+
+  {% endblock %}

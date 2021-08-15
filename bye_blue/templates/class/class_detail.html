@@ -25,6 +25,40 @@
     </button>
     {% endif %}
 
+    <div class='comment_wrapper'>
+        <div style="margin-top:10%;"class='comment_head'>
+          댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
+        </div>
+        {% for comment in comments %}
+        
+        <div class='comment_box'>
+          {{comment.writer}} : {{comment.text}}
+          <button class="btn btn-outline-secondary" onclick="location.href='/online_class/{{ object.id }}'">
+            <a href="{% url 'online_class:comment_edit' online_object.id comment.id %}">수정</a>
+            </button>
+          <button class="btn btn-outline-secondary">
+            <a href="{% url 'online_class:comment_delete' online_object.id comment.id %}">삭제</a>
+            </button>  
+          
+        </div>
+        {% endfor %}
+    
+        </div>
+    
+       
+
+
+
+    {% if session_name %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div style = "margin-top: 14px; float:left;"class="form-group">{{ comment_form }}</div>
+        <button style = "margin-left: 5px; margin-top: 8px; float:left;" type="submit" class = "btn btn-outline-secondary">작성!</button>
+    </form>
+
+    {% endif %}
+
    
        
         
