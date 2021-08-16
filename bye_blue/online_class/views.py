@@ -1,4 +1,3 @@
-from django.core import paginator
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.paginator import Paginator
 from django.utils import timezone
@@ -17,9 +16,9 @@ def index(request):
 
     online_object = Online.objects.all().order_by('-id')
     list_object['objects'] = online_object
-    page = request.GET.get('page', '1')
-    paginator = Paginator(online_object, 5)
-    list_object['page'] = paginator.get_page(page)
+    page = int(request.GET.get('p', 1))
+    pagenator = Paginator(online_object, 5)
+    list_object['page'] = pagenator.get_page(page)
 
     return render(request, 'class/class.html', list_object)
 
