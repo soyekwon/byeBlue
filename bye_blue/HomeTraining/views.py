@@ -58,7 +58,7 @@ def list(request):
     all_ht_board = HT.objects.all().order_by("-write_date")
     list_mess["print_list"] = all_ht_board
     page = int(request.GET.get("p", 1))
-    pagenator = Paginator(all_ht_board, 10)
+    pagenator = Paginator(all_ht_board, 3)
     list_mess["ht_board"] = pagenator.get_page(page)
 
     return render(request, "HomeTraining/list.html", list_mess)
@@ -82,20 +82,12 @@ def write(request):
         title = request.POST["title"]
         contents = request.POST["contents"]
         name = request.session.get("name")
-        images = request.FILES["images"]
+        images = request.FILES.get("images")
 
-        # user = User.objects.get(pk = name)# ->writer=user로 넘길때 사용
-        # print(user)
         ht_board = HT
         ht_board(
             part=part, title=title, contents=contents, writer=name, images=images
         ).save()
-
-        # for img in request.FILES.getlist("imgs"):
-        #     photo = Photo()
-        #     photo.post = ht_board
-        #     photo.image = img
-        #     photo.save()
 
         return redirect("/HomeTraining/list")
     else:
@@ -120,3 +112,25 @@ def comment(request, pk):
         res = {}
         res["PK"] = pk
         return render(request, "HomeTraining/comment.html", res)
+
+
+# 크롤링 구현
+
+# import selenium
+# from selenium import webdriver
+# from selenium.webdriver import ActionChains
+
+# from selenium.webdriver.common.keys import Keys
+# from selenium.webdriver.common.by import By
+
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.ui import Select
+# from selenium.webdriver.support.ui import WebDriverWait
+
+
+# def chrolling(reqeust):
+
+#     URL = "https://www.youtube.com/results?search_query=%EB%95%85%EB%81%84%EB%B6%80%EB%B6%80"
+
+#     driver = webdriver.edge(executable_path="msedgedriver")
+#     driver.get(url=URL)
