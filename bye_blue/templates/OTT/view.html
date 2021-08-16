@@ -5,7 +5,7 @@
     <table class="table table-bordered">
         <tbody>
             <tr>
-                <td class="text-center">운동부위 : {{board.part}}</td>
+                <td class="text-center">장르 : {{board.genre}}</td>
             </tr>
             <tr>
                 
@@ -15,6 +15,9 @@
                 <td class="text-center">작성자 : {{board.writer}}</td>
             </tr>
             <tr>
+                <td class="text-center">평가 : {{board.funny}}</td>
+            </tr>            
+            <tr>
                 <td><div style="min-height:300px;">{%autoescape off %}{{board.contents}}{% endautoescape%}</div></td>
             </tr>
             
@@ -23,14 +26,14 @@
     
 
 <div class ="text-center">
-        <a class = "btn btn-primary btn-sm" href ="{% url 'HomeTraining:list' %}">go back</a>
+        <a class = "btn btn-primary btn-sm" href ="{% url 'OTT:list' %}">go back</a>
         <p></p>
         {% if session_name == board.writer %}
-        <a class = "btn btn-danger" onclick = "location.href='/HomeTraining/delete/{{board.id}}'">삭제</a>
-        <a class = "btn btn-success" onclick = "location.href='/HomeTraining/edit/{{board.id}}'">수정</a>
+        <a class = "btn btn-danger" onclick = "location.href='/OTT/delete/{{board.id}}'">삭제</a>
+        <a class = "btn btn-success" onclick = "location.href='/OTT/edit/{{board.id}}'">수정</a>
         {% endif %}
         <p></p>
-        <a class = "btn btn-primary btn-sm" style="color:powderblue;" onclick = "location.href='/HomeTraining/comment/{{board.id}}'">comment</a>
+        <a class = "btn btn-primary btn-sm" style="color:powderblue;" onclick = "location.href='/OTT/comment/{{board.id}}'">comment</a>
 </div>
 
 
@@ -38,15 +41,13 @@
 <table class="table table-bordered">
     <tbody>
         <tr>
-            <p4>{{data.writer}}님 : {{data.contents}}</p4>
+            <p4 style="text-align: center;">{{data.writer}}님 : {{data.contents}}</p4>
             <p></p>
             <p6>{{data.write_date}}</p6>
         </tr>        
     </tbody>
 </table>
-
 {% endfor %}
-        
-</div>   
+        </div>   
     
 {% endblock %}

@@ -6,7 +6,12 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
 
   
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -26,7 +31,7 @@
                 <a style="color: #7D757D;" class="nav-link" href="{% url 'HomeTraining:list' %}">Home-T</a>
               </li>
                 <li class="nav-item">
-                  <a style="color: #7D757D;" class="nav-link" href="/">Watching</a>
+                  <a style="color: #7D757D;" class="nav-link" href="{% url 'OTT:list' %}">OTT</a>
                 </li>
                 <li class="nav-item">
                   <a style="color: #7D757D;"class="nav-link" href="{% url 'online_class:index' %}">Oline_Class</a>
@@ -34,8 +39,7 @@
                 <li class="nav-item">
                   <a style="color: #7D757D;" class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
-
-                <!-- <button  type="button" onclick = "location.href = '{% url 'account:login' %}'" style="margin-left: 560px; margin-top: 10px;"class="btn btn-outline-secondary">Log in</button> -->
+                
                 <button style= "margin-left: 300px;" class="btn btn-outline-secondary">
                   <a style="color:#7D757D;" href="{% url 'account:login' %}">Log_in</a>
                 </button>

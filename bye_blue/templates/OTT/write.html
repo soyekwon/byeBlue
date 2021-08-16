@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}  
 {% block content %}
 
+
 <script>
     function checkpost(){
       
@@ -18,12 +19,12 @@
     }
 </script>
 
-<form name = "form" method = "POST" action = "{% url 'HomeTraining:write' %}" onsubmit="return checkpost()">
+<form name = "form" method = "POST" action = "{% url 'OTT:write' %}" onsubmit="return checkpost()">
     {% csrf_token %}
 
     <div class = "form-group">
-        <label for="part">운동부위</label>
-        <input class="form-control" type ="text" name="part"> 
+        <label for="genre">장르</label>
+        <input class="form-control" type ="text" name="genre"> 
     </div>
     <div>
         <label for="title">제목</label>
@@ -33,11 +34,20 @@
         <label for="contents">내용</label>
         <textarea rows="12" class = "form-control" name = "contents"  placeholder="오늘의 운동을 기록하세요"></textarea> 
     </div>
-    <!-- <div>
-        <label for="title">사진</label>
-        <input class="form-control" type ="file" name="imgs" multiple> 
-    </div> -->
-    <p></p>
+    <div class="form-group">
+         <label for="radiogroup">작품에 대한 평가를 남겨주세요</label><br>
+         <div class="btn-group" data-toggle="buttons" id="radiogroup">
+             <label class="btn btn-secondary">
+             <input type="radio" name="funny" id="option1" autocomplete="off" value="1">보통이에요
+             </label>
+             <label class="btn btn-secondary">
+             <input type="radio" name="funny" id="option2" autocomplete="off" value="2"> 재밌어요
+             </label>
+             <label class="btn btn-secondary active">
+             <input type="radio" name="funny" id="option3" autocomplete="off" checked value="3"> 아주 재밌어요
+             </label>
+        </div>
+     </div>
     <div class="text-center">
         <input class="btn btn-primary btn-sm" type ="submit" vlaue="addpost">
     </div>
