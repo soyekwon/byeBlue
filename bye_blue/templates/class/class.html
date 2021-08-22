@@ -1,6 +1,16 @@
 {% extends 'main/base.html' %}  
 {% block content %}
 
+    {% for data in crollData %}
+      
+      <h5 style="margin-bottom: 15px;"><a href="#"></a>{{data.title}}</h5>
+      
+
+
+    {% endfor %}
+
+
+
     {% if name %}
     <button style="margin-left: 1200px;"class="btn btn-outline-secondary">
      <a href="{% url 'online_class:write' %}">글쓰기</a>

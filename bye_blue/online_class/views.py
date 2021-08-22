@@ -1,16 +1,18 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.core.paginator import Paginator
 from django.utils import timezone
-from django.db import models
 from django.contrib import messages
-from .models import Online, Comment
+from .models import Online, Comment, CrollData
 from account.models import User
 from .forms import OnlineForm, CommentForm
-
+import requests
+from bs4 import BeautifulSoup
 
 
 def index(request):
     list_object = {}
+    crolldata = CrollData.objects.all()
+    list_object['crollData'] = crolldata
     if request.session.get('email'):
         list_object['name'] = request.session['name']
 
@@ -21,6 +23,7 @@ def index(request):
     list_object['page'] = pagenator.get_page(page)
 
     return render(request, 'class/class.html', list_object)
+
 
 def detail(request, id):
     online_object = get_object_or_404(Online, pk = id)
@@ -142,6 +145,27 @@ def comment_delete(request, online_id, comment_id):
     }
     return render(request, 'class/class_comment_delete.html',context)
 
+def croll(requests):
+
+    req = requests.get('https://www.youtube.com/results?search_query=베이킹')
+
+    html = req.text
+
+    soup = BeautifulSoup(html, 'html.parser')
+
+    my_titles = soup.select('#video-title')
+
+    cnt = 0
+
+    for title in my_titles:
+
+        if(cnt == 5):
+            break
+
+        else:
+            print(title.text)
+            print(title.get('href'))
+            cnt += 1
     
     
 
