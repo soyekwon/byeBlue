@@ -3,7 +3,7 @@
 
     {% for data in crollData %}
       
-      <h5 style="margin-bottom: 15px;"><a href="#"></a>{{data.title}}</h5>
+      <a style = "color: #544E54;" href = {{data.link}}><h5 style="margin-bottom: 20px; text-align: center;">{{data.title}}</h5></a>
       
 
 
@@ -12,8 +12,8 @@
 
 
     {% if name %}
-    <button style="margin-left: 1200px;"class="btn btn-outline-secondary">
-     <a href="{% url 'online_class:write' %}">글쓰기</a>
+    <button style="margin-left: 75%; "class="btn btn-outline-secondary">
+     <a style = "color: #544E54; " href="{% url 'online_class:write' %}">글쓰기</a>
     </button>
     {% else %}
     <p>글 작성을 원하신다면 로그인이 필요합니다</p>

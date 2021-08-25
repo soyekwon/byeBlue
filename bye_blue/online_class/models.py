@@ -27,7 +27,7 @@ class Comment(models.Model):
 
 class CrollData(models.Model):
     title = models.CharField(max_length=200)
-    link = models.URLField()
+    link = models.CharField(max_length=500)
 
     def __str__(self):
     	return self.title

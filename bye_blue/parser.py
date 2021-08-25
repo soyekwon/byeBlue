@@ -17,7 +17,7 @@ def croll_data():
 
     cnt = 0
     for title in my_titles:
-        if(cnt == 5):
+        if(cnt == 7):
             break
         else:
             data[title.text] = title['href']
