@@ -12,6 +12,27 @@
 <p>안녕하세요! 오늘은 운동으로 건강한 생활 어떠세요?</p>
 {% endif %}
 
+<div>
+<table class = "table table-hover text-center">
+    <thead class="thead-dark">
+        <tr>
+            <td>제목</td>
+            <td>조회수</td>
+        </tr>
+    </thead>
+    <tbody>
+      {% for data in youtube_board %}
+        <tr>
+          <td style="color: royalblue;"><a href="{{data.youtube_url}}">{{data.youtube_title}}</a></td>
+          <td>{{data.youtube_view}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<div>
+
 <table class = "table table-hover text-center">
     <thead class="thead-dark">
         <tr>
@@ -61,14 +82,14 @@
     </li>
     {% endif %}
 </ul>
+</div>
+
 
 <script>
   function no_name_add_post(){
     alert("로그인이 필요합니다");
   }
 </script>
-
-
 
 {% if name %}
 <div class="text-center">

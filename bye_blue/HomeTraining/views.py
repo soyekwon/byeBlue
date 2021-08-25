@@ -49,9 +49,59 @@ def edit(request, pk):
             return redirect("/HomeTraining/list", res)
 
 
+from bs4 import BeautifulSoup as bs
+from selenium import webdriver
+import pandas as pd
+import copy
+
+
+def youtube(request):
+    keyword = "홈트레이닝"
+    target_url = "https://www.youtube.com/results?search_query={}".format(keyword)
+
+    driver = webdriver.Edge("C:\\bye_blue_sujin\\byeBlue\\bye_blue\\msedgedriver.exe")
+    driver.get(target_url)
+    soup = bs(driver.page_source, "html.parser")
+    driver.close()
+
+    name = soup.select("a#video-title")
+    video_url = soup.select("a#video-title")
+    view = soup.select("a#video-title")
+    # image = soup.select('img[class="style-scope yt-img-shadow"]')
+
+    name_list = []
+    url_list = []
+    view_list = []
+
+    for i in range(len(name)):
+        name_list.append(name[i].get("title"))
+        view_list.append(view[i].get("aria-label").split()[-1])
+    for i in video_url:
+        url_list.append("{}{}".format("https://www.youtube.com", i.get("href")))
+
+    youtubeDic = {"title": name_list, "url": url_list, "click": view_list}
+
+    youtubeDf = pd.DataFrame(youtubeDic)
+
+    youtubeDf.to_csv("홈트레이닝유튜브.csv", encoding="", index=False)
+
+    for i in range(0, len(name_list)):
+        youtube = YoutubeHt
+        youtube(
+            youtube_title=name_list[i],
+            youtube_url=url_list[i],
+            youtube_view=view_list[i],
+        ).save()
+
+
 def list(request):
-    # session을 지워주면
+
     list_mess = {}
+    all_ht_youtube = YoutubeHt.objects.all().order_by("-youtube_view")
+    if not all_ht_youtube:
+        youtube()
+    list_mess["youtube_board"] = all_ht_youtube[:5]
+
     if request.session.get("email"):
         list_mess["name"] = request.session["name"]
 
@@ -112,25 +162,3 @@ def comment(request, pk):
         res = {}
         res["PK"] = pk
         return render(request, "HomeTraining/comment.html", res)
-
-
-# 크롤링 구현
-
-# import selenium
-# from selenium import webdriver
-# from selenium.webdriver import ActionChains
-
-# from selenium.webdriver.common.keys import Keys
-# from selenium.webdriver.common.by import By
-
-# from selenium.webdriver.support import expected_conditions as EC
-# from selenium.webdriver.support.ui import Select
-# from selenium.webdriver.support.ui import WebDriverWait
-
-
-# def chrolling(reqeust):
-
-#     URL = "https://www.youtube.com/results?search_query=%EB%95%85%EB%81%84%EB%B6%80%EB%B6%80"
-
-#     driver = webdriver.edge(executable_path="msedgedriver")
-#     driver.get(url=URL)

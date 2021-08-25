@@ -28,3 +28,15 @@ class HT_COMMENT(models.Model):
 
     class Meta:
         db_table = "HT_COM_board"
+
+
+class YoutubeHt(models.Model):
+    youtube_title = models.CharField(max_length=100, verbose_name="유튜브제목", unique=True)
+    youtube_url = models.CharField(max_length=100, verbose_name="링크")
+    youtube_view = models.CharField(max_length=100, verbose_name="클릭수")
+
+    def __str__(self):
+        return str(self.youtube_title)
+
+    class Meta:
+        db_table = "HT_youtube"
