@@ -1,0 +1,179 @@
+{% extends 'main/base.html' %}  
+{% block content %}
+
+    {% if name %}
+
+    <h5 style="text-align: center;">{{name}}님 환영합니다 !!</h5>
+    <h5 style="text-align: center;">당신의 Mbti를 아시나요? 모르면 테스트 하러 Go!!   <a href="https://www.16personalities.com/ko/%EB%AC%B4%EB%A3%8C-%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95-%EA%B2%80%EC%82%AC">Mbit 테스트 하러가기 </a></h5>
+
+    
+    <!-- 1 -->
+    <div class="card-group" style="margin-left: 180px; margin-right: 180px; margin-top: 50px;">
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/intj3.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">INTJ</h5>
+          <p class="card-text"><h5>용의주도한 전략가</h5>상상력이 풍부하며 철두철미한 계획을 세우는 전략가형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/intp.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">INTP</h5>
+          <p class="card-text"><h5>논리적인 사색가</h5>끊임없이 새로운 지식에 <br>목말라 하는 혁신가형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-intp" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/entj.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ENTJ</h5>
+          <p class="card-text"><h5>대담한 통솔자</h5>대담하면서도 상상력이 풍부한 강한의지의 소유자로 새로운 방안을 창출하는 리더형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/entp.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ENTP</h5>
+          <p class="card-text"><h5>뜨거운 논쟁을 즐기는 변론가</h5>지적인 도전을 두려워하지 않는 <br>똑똑한 호기심형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-entp" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+    </div>
+      
+    <!-- 2 -->
+    <div class="card-group" style="margin-left: 180px; margin-right: 180px; margin-top: 50px;">
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/infj.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">INFJ</h5>
+          <p class="card-text"><h5>선의의 옹호자</h5>조용하고 신비로우며 샘솟는 영감으로 지칠 줄 모르는 이상주의자</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/infp.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">INFP</h5>
+          <p class="card-text"><h5>열정적인 중재자</h5>상냥한 성격의 이타주의자로 건강하고 밝은 사회건설에 앞장서는 낭만형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-infp" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/enfj.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ENFJ</h5>
+          <p class="card-text"><h5>정의로운 사회운동가</h5>넘치는 카리스마와 영향력으로 청중을 앞도하는 리더형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/enfp.jpeg" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ENFP</h5>
+          <p class="card-text"><h5>재기발랄한 활동가</h5>창의적이며 웃음거리를 찾아다니는 성격으로 남들과 어울리기를 좋아하는 넘치는 열정의 소유자</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfp" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card-group" style="margin-left: 180px; margin-right: 180px; margin-top: 50px;">
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/istj.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ISTJ</h5>
+          <p class="card-text"><h5>청렴결백한 논리주의자</h5>사실에 근거하여 사고하며 이들의 행동이나 결정사항에 한치의 의심을 사지않는 현실주의자형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/isfj.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ISFJ</h5>
+          <p class="card-text"><h5>용감한 수호자</h5>소중한 이들을 수호하는 데 심혈을 기울이는 헌신적이며 성실한 방어자형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/estj.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ESTJ</h5>
+          <p class="card-text"><h5>엄격한 관리자</h5>사물이나 사람을 관리하는 데 타의 추정을 불허하는 뛰어난 실력을 갖춘 관리자형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-estj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/esfj.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ESFJ</h5>
+          <p class="card-text"><h5>사교적인 외교관</h5>타인을 향한 관심과 사교적인 성향으로 인기가 많으며, 타인을 돕는데 열성적인 세심형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+    </div>
+      
+    <!-- 4 -->
+    <div class="card-group" style="margin-left: 180px; margin-right: 180px; margin-top: 50px;">
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/istp.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ISTP</h5>
+          <p class="card-text"><h5>만능 재주꾼</h5>대담하고 현실적인 성향으로 다양한 도구사용에 능숙한 탐험형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-istp" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/isfp.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ISFP</h5>
+          <p class="card-text"><h5>호기심 많은 예술가</h5>항시 새로운 것을 찾아 시도하거나 도전할 준비가 돼있는 융통성있는 성격의 매력적인 예술가형 </p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-isfp" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/estp.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ESTP</h5>
+          <p class="card-text"><h5>모험을 즐기는 사업가</h5>아슬아슬한 삶을 진정 즐길 줄 아는, 명석한 두뇌와 에너지, 뛰어난 직관력을 가지고있는 유형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-enfj" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 16rem;">
+        <img src="/static/imgs/esfp.png" width="150">
+        <div class="card-body" style="background-color: #FFDDDD; color: #544E54; text-align: center; ">
+          <h5 class="card-title">ESFP</h5>
+          <p class="card-text"><h5>자유로운 영혼의 연예인</h5>주위에 있으면 인생이 지루할 틈이 없을 정도로 즉흥적이며 열정과 에너지가 넘치는 연예인형</p>
+          <a href="https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9%EC%9C%A0%ED%98%95-esfp" class="btn btn-outline-secondary">자세히 알아보기</a>
+        </div>
+      </div>
+    </div>
+    <p style = "margin-left: 55%;">출처 https://www.16personalities.com/ko/%EC%84%B1%EA%B2%A9-%EC%9C%A0%ED%98%95</p>
+
+
+   
+    {% endif %}
+        
+        
+
+    
+
+{% endblock %}

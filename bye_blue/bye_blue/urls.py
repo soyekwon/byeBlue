@@ -21,6 +21,7 @@ from online_class import views
 import main.urls
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf import settings 
 
 
 urlpatterns = [
@@ -30,4 +31,10 @@ urlpatterns = [
     path("online_class/", include("online_class.urls", namespace="online_class")),
     path("HomeTraining/", include("HomeTraining.urls", namespace="HomeTraining")),
     path("OTT/", include("OTT.urls", namespace="OTT")),
+    path("MbTi/", include("mbti.urls", namespace="mbti")),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+

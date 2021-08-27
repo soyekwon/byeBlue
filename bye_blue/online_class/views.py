@@ -5,7 +5,6 @@ from django.contrib import messages
 from .models import Online, Comment, CrollData
 from account.models import User
 from .forms import OnlineForm, CommentForm
-import requests
 from bs4 import BeautifulSoup
 
 
