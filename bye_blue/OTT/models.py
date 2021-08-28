@@ -28,3 +28,13 @@ class OTT_COMMENT(models.Model):
 
     class Meta:
         db_table = "OTT_COM_board"
+
+
+class Netflix(models.Model):
+    title = models.CharField(max_length=100, verbose_name="크롤링제목", unique=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        db_table = "Nexflix_board"

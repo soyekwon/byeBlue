@@ -55,51 +55,48 @@ import pandas as pd
 import copy
 
 
-def youtube(request):
-    keyword = "홈트레이닝"
-    target_url = "https://www.youtube.com/results?search_query={}".format(keyword)
-
-    driver = webdriver.Edge("C:\\bye_blue_sujin\\byeBlue\\bye_blue\\msedgedriver.exe")
-    driver.get(target_url)
-    soup = bs(driver.page_source, "html.parser")
-    driver.close()
-
-    name = soup.select("a#video-title")
-    video_url = soup.select("a#video-title")
-    view = soup.select("a#video-title")
-    # image = soup.select('img[class="style-scope yt-img-shadow"]')
-
-    name_list = []
-    url_list = []
-    view_list = []
-
-    for i in range(len(name)):
-        name_list.append(name[i].get("title"))
-        view_list.append(view[i].get("aria-label").split()[-1])
-    for i in video_url:
-        url_list.append("{}{}".format("https://www.youtube.com", i.get("href")))
-
-    youtubeDic = {"title": name_list, "url": url_list, "click": view_list}
-
-    youtubeDf = pd.DataFrame(youtubeDic)
-
-    youtubeDf.to_csv("홈트레이닝유튜브.csv", encoding="", index=False)
-
-    for i in range(0, len(name_list)):
-        youtube = YoutubeHt
-        youtube(
-            youtube_title=name_list[i],
-            youtube_url=url_list[i],
-            youtube_view=view_list[i],
-        ).save()
-
-
 def list(request):
 
     list_mess = {}
+    if not YoutubeHt.objects.all():
+        keyword = "홈트레이닝"
+        target_url = "https://www.youtube.com/results?search_query={}".format(keyword)
+
+        driver = webdriver.Edge("msedgedriver.exe")
+        driver.get(target_url)
+        soup = bs(driver.page_source, "html.parser")
+        driver.close()
+
+        name = soup.select("a#video-title")
+        video_url = soup.select("a#video-title")
+        view = soup.select("a#video-title")
+        # image = soup.select('img[class="style-scope yt-img-shadow"]')
+
+        name_list = []
+        url_list = []
+        view_list = []
+
+        for i in range(len(name)):
+            name_list.append(name[i].get("title"))
+            view_list.append(view[i].get("aria-label").split()[-1])
+        for i in video_url:
+            url_list.append("{}{}".format("https://www.youtube.com", i.get("href")))
+
+        youtubeDic = {"title": name_list, "url": url_list, "click": view_list}
+
+        youtubeDf = pd.DataFrame(youtubeDic)
+
+        youtubeDf.to_csv("홈트레이닝유튜브.csv", encoding="", index=False)
+
+        for i in range(0, len(name_list)):
+            youtube = YoutubeHt
+            youtube(
+                youtube_title=name_list[i],
+                youtube_url=url_list[i],
+                youtube_view=view_list[i],
+            ).save()
+
     all_ht_youtube = YoutubeHt.objects.all().order_by("-youtube_view")
-    if not all_ht_youtube:
-        youtube()
     list_mess["youtube_board"] = all_ht_youtube[:5]
 
     if request.session.get("email"):

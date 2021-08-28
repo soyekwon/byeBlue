@@ -51,9 +51,57 @@ def edit(request, pk):
             return redirect("/OTT/list", res)
 
 
+from bs4 import BeautifulSoup as bs
+from selenium import webdriver
+import pandas as pd
+import copy
+import time
+import threading
+
+
+# def delete():
+#     Netflix.delete()
+#     threading.Timer(86400, delete).start()
+
+
+# delete()
+
+
 def list(request):
-    # session을 지워주면
+
     list_mess = {}
+
+    if not Netflix.objects.all():
+        netflix_url = "https://www.4flix.co.kr/netflixranking/"
+
+        driver = webdriver.Edge("msedgedriver.exe")
+        driver.get(netflix_url)
+        soup = bs(driver.page_source, "html.parser")
+        driver.close()
+
+        name = soup.select("span#n-title")
+        # image = soup.select('img[class="style-scope yt-img-shadow"]')
+
+        name_list = []
+
+        for i in range(len(name)):
+            name_list.append(name[i].get_text())
+
+        netflixDic = {"title": name_list}
+
+        netflixDf = pd.DataFrame(netflixDic)
+
+        netflixDf.to_csv("넷플릭스 인기순위.csv", encoding="", index=False)
+
+        for i in range(0, len(name_list)):
+            netflix = Netflix
+            netflix(title=name_list[i]).save()
+
+    all_ott_netflix = Netflix.objects.all()
+    list_mess["netflix_board"] = all_ott_netflix[:5]
+
+    # session을 지워주면
+
     if request.session.get("email"):
         list_mess["name"] = request.session["name"]
 

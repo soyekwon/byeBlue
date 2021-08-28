@@ -11,6 +11,22 @@
 {% else %}
 <p>안녕하세요! 오늘은 OTT플 통한 신나는 생활 어떠세요?</p>
 {% endif %}
+<div>
+<table class = "table table-hover text-center">
+    <thead class="thead-dark">
+        <tr>
+            <td>넷플릭스 인기순위 제목</td>
+        </tr>
+    </thead>
+    <tbody>
+      {% for data in netflix_board %}
+        <tr>
+          <td>{{data.title}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+</div>
 
 <table class = "table table-hover text-center">
     <thead class="thead-dark">
