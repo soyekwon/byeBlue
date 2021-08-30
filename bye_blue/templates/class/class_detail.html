@@ -5,59 +5,63 @@
 
     <div>
 
+
+
+        <div class="card" style="width: 70rem; height: 25rem; margin-left: 18%; background-color: rgb(195, 221, 231);">
+            <div class="card-body">
+              <h5 class="card-title" >제목: {{online_object.title}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted"  style="margin-top: 2%;" >날짜: {{online_object.pub_date}}</h6>
+              <p class="card-text" style="margin-top: 2%;">내용: {{online_object.content}}</p>
+              
+            </div>
+        </div>
+
+
+        {% if session_name ==  online_object.writer %}
+        <button style="margin-left: 43%; margin-top: 1%;"class="btn btn-outline-secondary">
+            <a style= "color: #7D757D;" href="{% url 'online_class:edit' online_object.id %}">글수정</a>
+        </button>
+        <button style="margin-left: 10px; margin-top: 1%; "class="btn btn-outline-secondary">
+            <a style= "color: #7D757D;" href="{% url 'online_class:delete' online_object.id %}">글삭제</a>
+        </button>
+        {% endif %}
+
+        {% if session_name %}
+    
+        <form method="POST">
+            {% csrf_token %}
+            <div style = "margin-left:40%; margin-top: 1%; float:left;"class="form-group">{{ comment_form }}</div>
+            <button style = "margin-left: 5px; margin-top: 1%; float:left;" type="submit" class = "btn btn-outline-secondary">작성!</button>
+        </form>
+    
+        {% endif %}
+
+        <div class='cm_container'>
+            <div style="margin-top: 5%;"class='cm_head'>
+              댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
+            </div>
+            {% for comment in comments %}
+            
+            <div style = "margin-top: 0.5%;"class='cm'>
+              {{comment.writer}} : {{comment.text}}
+              <button style = "height: 30px;" class="btn btn-outline-secondary" onclick="location.href='/online_class/{{ object.id }}'">
+                <a style= "color: #7D757D;" href="{% url 'online_class:comment_edit' online_object.id comment.id %}">수정</a>
+                </button>
+              <button style = "height: 30px;" class="btn btn-outline-secondary">
+                <a style= "color: #7D757D;" href="{% url 'online_class:comment_delete' online_object.id comment.id %}">삭제</a>
+                </button>  
+              
+            </div>
+            {% endfor %}
         
-        <br>
-        <h3>{{online_object.title}}</h3>
-        <p> {{online_object.pub_date}} </p>
-        <p> {{online_object.content}} </p>
-        <br>
-        <br>
+        </div>
+        
+        
         
 
     </div>
 
-    {% if session_name ==  online_object.writer %}
-    <button style="margin-left: 10px;"class="btn btn-outline-secondary">
-        <a href="{% url 'online_class:edit' online_object.id %}">수정하기</a>
-    </button>
-    <button style="margin-left: 10px;"class="btn btn-outline-secondary">
-        <a href="{% url 'online_class:delete' online_object.id %}">삭제하기</a>
-    </button>
-    {% endif %}
-
-    <div class='comment_wrapper'>
-        <div style="margin-top:10%;"class='comment_head'>
-          댓글 <i class="iconify" data-icon="akar-icons:comment"></i>
-        </div>
-        {% for comment in comments %}
-        
-        <div class='comment_box'>
-          {{comment.writer}} : {{comment.text}}
-          <button class="btn btn-outline-secondary" onclick="location.href='/online_class/{{ object.id }}'">
-            <a href="{% url 'online_class:comment_edit' online_object.id comment.id %}">수정</a>
-            </button>
-          <button class="btn btn-outline-secondary">
-            <a href="{% url 'online_class:comment_delete' online_object.id comment.id %}">삭제</a>
-            </button>  
-          
-        </div>
-        {% endfor %}
-    
-        </div>
-    
-       
-
-
-
-    {% if session_name %}
-
-    <form method="POST">
-        {% csrf_token %}
-        <div style = "margin-top: 14px; float:left;"class="form-group">{{ comment_form }}</div>
-        <button style = "margin-left: 5px; margin-top: 8px; float:left;" type="submit" class = "btn btn-outline-secondary">작성!</button>
-    </form>
-
-    {% endif %}
+   
 
    
        

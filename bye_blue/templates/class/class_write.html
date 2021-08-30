@@ -2,14 +2,14 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container" style="text-align: center;">
 
 
         <form method="post" class="post-form my-3">
             {% csrf_token %}
             {{ form.as_p }}
 
-        <button type="submit">작성!</button>
+        <button class="btn btn-outline-secondary" type="submit">작성!</button>
 
 
         </form>

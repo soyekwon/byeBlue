@@ -18,7 +18,7 @@ def index(request):
     online_object = Online.objects.all().order_by('-id')
     list_object['objects'] = online_object
     page = int(request.GET.get('p', 1))
-    pagenator = Paginator(online_object, 5)
+    pagenator = Paginator(online_object, 7)
     list_object['page'] = pagenator.get_page(page)
 
     return render(request, 'class/class.html', list_object)
