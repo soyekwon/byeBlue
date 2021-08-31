@@ -23,11 +23,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", main.views.index),
-    path("account/", include("account.urls", namespace="account")),
-    path("online_class/", include("online_class.urls", namespace="online_class")),
-    path("HomeTraining/", include("HomeTraining.urls", namespace="HomeTraining")),
-    path("OTT/", include("OTT.urls", namespace="OTT")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("", main.views.index),
+        path("account/", include("account.urls", namespace="account")),
+        path("online_class/", include("online_class.urls", namespace="online_class")),
+        path("HomeTraining/", include("HomeTraining.urls", namespace="HomeTraining")),
+        path("OTT/", include("OTT.urls", namespace="OTT")),
+    ]
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+)

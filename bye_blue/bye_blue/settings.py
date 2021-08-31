@@ -114,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "ko-kr"
 
 
-
 TIME_ZONE = "Asia/Seoul"
 
 
@@ -129,22 +128,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, "static"),
-]
+# STATICFILES_DIR = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-# MEDIA_URL = "/media/"
-# MEDIA_DIR = [
-#     os.path.join(BASE_DIR, "media"),
-# ]
-# 미디어 파일을 관리할 루트 media 디렉터리
-# 각 media file에 대한 URL prefix
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
