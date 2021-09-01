@@ -1,10 +1,6 @@
+
+
 .nav-item {
-    color: black;
+    color:rgb(0, 0, 0);
 }
 
-.bg {
-    color: chartreuse;
-    background: url('/static/images/OTT.jpg');
-    width: cover;
-    height: 718px;
-}

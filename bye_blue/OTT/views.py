@@ -70,7 +70,6 @@ import threading
 def list(request):
 
     list_mess = {}
-
     if not Netflix.objects.all():
         netflix_url = "https://www.4flix.co.kr/netflixranking/"
 

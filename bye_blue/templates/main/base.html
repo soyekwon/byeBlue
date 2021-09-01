@@ -1,10 +1,11 @@
-  
+{% load static%}
+
 <!doctype html>
 <html>
     <head>
         <tilte></tilte>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="../../templates/main/style.css" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -22,10 +23,9 @@
         <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
     
     </head>
-    <body class = "bg">  
+    <body style="background-image: url(../../static/images/나비.jpeg); background-size: cover; background-attachment: fixed; background-repeat: no-repeat; ">
         <script type="text/javascript" src="static/bootstrap/js/bootstrap.js"></script>
         <div style="height: 132px;"class="top">
-
             <ul class="nav" style="margin-left: 40%;">
               <li class="nav-item">
                 <a style="color: #7D757D;" class="nav-link" href="{% url 'HomeTraining:list' %}">Home-T</a>
@@ -78,6 +78,6 @@
 
          
         </div>
-
+        </div>
     </body>
 </html>
