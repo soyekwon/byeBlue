@@ -2,33 +2,24 @@
 {% block content %}
 
 <h3 style = "text-align: center;"> 홈트레이닝 게시판</h3>
-{%if name %}
-<p>안녕하세요! {{name}}님, 오늘은 운동으로 건강한 생활 어떠세요?
-    <!-- <button class="btn btn-outline-secondary">
-        <a style="color:#7D757D;" href ="{% url 'account:logout' %}">log out</a>
-    </button> -->
-</p>
-{% else %}
-<p>안녕하세요! 오늘은 운동으로 건강한 생활 어떠세요?</p>
-{% endif %}
+<div style="text-align: center;">
+  {%if name %}
+  <p>안녕하세요! {{name}}님, 오늘은 운동으로 건강한 생활 어떠세요?
+      <!-- <button class="btn btn-outline-secondary">
+          <a style="color:#7D757D;" href ="{% url 'account:logout' %}">log out</a>
+      </button> -->
+  </p>
+  {% else %}
+  <p>안녕하세요! 오늘은 운동으로 건강한 생활 어떠세요?</p>
+  {% endif %}
 
-<div>
-<table class = "table table-hover text-center">
-    <thead class="thead-dark">
-        <tr>
-            <td>제목</td>
-            <td>조회수</td>
-        </tr>
-    </thead>
-    <tbody>
-      {% for data in youtube_board %}
-        <tr>
-          <td style="color: royalblue;"><a href="{{data.youtube_url}}">{{data.youtube_title}}</a></td>
-          <td>{{data.youtube_view}}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-</table>
+  <p style="color: rgb(223, 87, 24);"> 유튜브 '홈트레이닝' 검색 링크5</p>
+
+  {% for data in youtube_board %}
+    <a href="{{data.youtube_url}}">{{data.youtube_title}}</a>
+    <p></p>
+  {% endfor %}
+
 </div>
 
 <div>

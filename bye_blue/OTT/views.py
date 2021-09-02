@@ -71,22 +71,25 @@ def list(request):
 
     list_mess = {}
     if not Netflix.objects.all():
-        netflix_url = "https://www.4flix.co.kr/netflixranking/"
+        netflix_url = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EB%84%B7%ED%94%8C%EB%A6%AD%EC%8A%A4+%EC%B6%94%EC%B2%9C"
 
         driver = webdriver.Edge("msedgedriver.exe")
         driver.get(netflix_url)
         soup = bs(driver.page_source, "html.parser")
         driver.close()
 
-        name = soup.select("span#n-title")
+        data_netflix = soup.select(".total_area > a")
         # image = soup.select('img[class="style-scope yt-img-shadow"]')
 
         name_list = []
+        url_list = []
 
-        for i in range(len(name)):
-            name_list.append(name[i].get_text())
+        for i in range(len(data_netflix)):
+            name_list.append(data_netflix[i].text)
+        for i in data_netflix:
+            url_list.append("{}".format(i.get("href")))
 
-        netflixDic = {"title": name_list}
+        netflixDic = {"title": name_list, "url": url_list}
 
         netflixDf = pd.DataFrame(netflixDic)
 
@@ -94,7 +97,7 @@ def list(request):
 
         for i in range(0, len(name_list)):
             netflix = Netflix
-            netflix(title=name_list[i]).save()
+            netflix(title=name_list[i], url=url_list[i]).save()
 
     all_ott_netflix = Netflix.objects.all()
     list_mess["netflix_board"] = all_ott_netflix[:5]

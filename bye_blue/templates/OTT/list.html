@@ -2,8 +2,9 @@
 {% block content %}
 
 <h3 style = "text-align: center;"> OTT 게시판</h3>
+<div style="text-align: center;">
 {%if name %}
-<p>안녕하세요! {{name}}님, 오늘은 OTT를 통한 신나는 생활 어떠세요?
+<p>안녕하세요! <b>{{name}}</b>님, 오늘은 OTT를 통한 신나는 생활 어떠세요?
     <!-- <button class="btn btn-outline-secondary">
         <a style="color:#7D757D;" href ="{% url 'account:logout' %}">log out</a>
     </button> -->
@@ -11,22 +12,14 @@
 {% else %}
 <p>안녕하세요! 오늘은 OTT플 통한 신나는 생활 어떠세요?</p>
 {% endif %}
-<div>
-<table class = "table table-hover text-center">
-    <thead class="thead-dark">
-        <tr>
-            <td>넷플릭스 인기순위 제목</td>
-        </tr>
-    </thead>
-    <tbody>
-      {% for data in netflix_board %}
-        <tr>
-          <td>{{data.title}}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-</table>
+
+  <p style="color: rgb(223, 87, 24);">넷플릭스 블로그 top5</p>
+  {% for data in netflix_board %}
+    <a href="{{data.url}}">{{data.title}}</a>
+    <p></p>
+  {% endfor %}
 </div>
+
 
 <table class = "table table-hover text-center">
     <thead class="thead-dark">

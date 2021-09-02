@@ -12,7 +12,20 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript"></script>
         <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
+        
+        <style>
+          .background{
+            background-image: url(../../static/images/OTT.jpg);
+            background-size: cover;
+            background-attachment: fixed; 
+            background-repeat: no-repeat;
+          }
+          .background::before{
+            opacity: 0.3;
+            filter: alpha(opacity=30);
+           
+          }
+        </style>
 
   
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
@@ -24,7 +37,7 @@
     
     </head>
 
-    <body style="background-image: url(../../static/images/OTT.jpg); background-size: cover; background-attachment: fixed; background-repeat: no-repeat; ">
+    <body class="background">
         <script type="text/javascript" src="static/bootstrap/js/bootstrap.js"></script>
         <div style="height: 132px;"class="top">
             <ul class="nav" style="margin-left: 40%;">

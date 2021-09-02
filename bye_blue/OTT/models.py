@@ -1,4 +1,5 @@
 from django.db import models
+from numpy import bitwise_not
 from account.models import User
 
 
@@ -31,7 +32,8 @@ class OTT_COMMENT(models.Model):
 
 
 class Netflix(models.Model):
-    title = models.CharField(max_length=100, verbose_name="크롤링제목", unique=True)
+    title = models.CharField(max_length=100, verbose_name="블로그제목", unique=True)
+    url = models.CharField(max_length=300, verbose_name="블로그링크", unique=True)
 
     def __str__(self):
         return self.title
