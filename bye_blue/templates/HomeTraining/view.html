@@ -1,5 +1,40 @@
-{% extends 'HomeTraining/index.html' %}  
+{% extends 'main/base.html' %}  
 {% block content %}
+
+
+
+<script>
+    function checkpost(){
+
+        if($("input[name=contents]").val() == ""){
+            alert("내용이 입력되지 않았습니다");
+            $("input[name=contents]").focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+
+<style>
+    .background{
+        background-image : url(../../static/images/HT.png)
+    }
+    .table{
+        width :1000px;
+        text-align: center;
+        color :pink;
+        margin-left:auto;
+        margin-right:auto;
+
+    }
+    .form-group{
+        width : 250px;
+        font-size: medium;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 
 <div class="bgPinkLighten4 ">
     <table class="table table-bordered">
@@ -28,7 +63,7 @@
     </table>
     
 
-<div class ="text-center">
+        <div class ="text-center">
         <a class = "btn btn-primary btn-sm" href ="{% url 'HomeTraining:list' %}">go back</a>
         <p></p>
         {% if session_name == board.writer %}
@@ -36,23 +71,36 @@
             <a class = "btn btn-success" onclick = "location.href='/HomeTraining/edit/{{board.id}}'">수정</a>
         {% endif %}
         <p></p>
-        <a class = "btn btn-primary btn-sm" style="color:powderblue;" onclick = "location.href='/HomeTraining/comment/{{board.id}}'">comment</a>
+        </div>
+        <form style="text-align: center;" name= "form" method = "POST" action = "/HomeTraining/comment/{{board.id}}" onsubmit="return checkpost()">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <!-- <label for="contents">contents</label> -->
+            <textarea class="form-control" name = "contents" >{{comment.contents}}</textarea>
+        </div>
+        <p></p>
+        <div class="text-center">
+            <input class="btn btn-primary btn-sm" type ="submit" value="comment" placeholder="댓글을 입력하세요">
+        </div>
+    
+        </form>
+       
 </div>
 
 
+<p></p>
 {% for data in comment %}
-<table class="table table-bordered">
-    <tbody>
-        <tr>
-            <p4>{{data.writer}}님 : {{data.contents}}</p4>
-            <p></p>
-            <p6>{{data.write_date}}</p6>
-        </tr>        
-    </tbody>
-</table>
+    <div style="text-align: center;">
+    <p4 style=" color: pink;">{{data.writer}}님 : {{data.contents}}</p4>
+    <p6 style="color:rgb(148, 138, 140)">{{data.write_date}}</p6>
+    <p></p>
+    </div>
 
 {% endfor %}
         
-</div>   
-    
+</div> 
+
+
+
 {% endblock %}

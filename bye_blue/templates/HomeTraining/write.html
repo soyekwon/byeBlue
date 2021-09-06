@@ -1,4 +1,4 @@
-{% extends 'HomeTraining/index.html' %}  
+{% extends 'main/base.html' %}  
 {% block content %}
 
 <script>
@@ -18,7 +18,26 @@
     }
 </script>
 
-<form name = "form" method = "POST" action = "{% url 'HomeTraining:write' %}" onsubmit="return checkpost()" enctype="multipart/form-data">
+<style>
+    form{
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left:auto;
+        margin-right:auto;
+        width : 80%;
+    }
+    .file_button{
+        width:50%;
+        margin-left: 24%;
+        margin-right: auto;
+        padding : 6px 25px; 
+        background-color: pink; 
+        color:royalblue; 
+        cursor:pointer}
+
+</style>
+
+<form name = "form" method = "POST" action = "{% url 'HomeTraining:write' %}" onsubmit="return checkpost()" enctype="multipart/form-data" class="form_write">
     {% csrf_token %}
 
     <div class = "form-group">
@@ -33,10 +52,11 @@
         <label for="contents">내용</label>
         <textarea rows="12" class = "form-control" name = "contents"  placeholder="오늘의 운동을 기록하세요"></textarea> 
     </div>
-    <input class="form-control" type ="file" name="images">  
+    <p></p>
+    <input  type ="file" name="images" class="file_button">  
     <p></p>
     <div class="text-center">
-        <input class="btn btn-primary btn-sm" type ="submit" vlaue="addpost">
+        <input class="btn btn-primary btn-sm" type ="submit" value="addpost">
     </div>
     
 </form>

@@ -19,6 +19,22 @@
     }
 </script>
 
+<style>
+    form{
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left:auto;
+        margin-right:auto;
+        width : 80%;
+    }
+    .btn-group{
+        width: 50%;
+        margin-left: 23%;
+        margin-right: auto;
+        color:royalblue;}
+
+</style>
+
 <form name = "form" method = "POST" action = "{% url 'OTT:write' %}" onsubmit="return checkpost()">
     {% csrf_token %}
 
@@ -34,8 +50,8 @@
         <label for="contents">내용</label>
         <textarea rows="12" class = "form-control" name = "contents"  placeholder="오늘의 시청을 기록하세요"></textarea> 
     </div>
+    <p></p>
     <div class="form-group">
-         <label for="radiogroup">작품에 대한 평가를 남겨주세요</label><br>
          <div class="btn-group" data-toggle="buttons" id="radiogroup">
              <label class="btn btn-secondary">
              <input type="radio" name="funny" id="option1" autocomplete="off" value="1">보통이에요

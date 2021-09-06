@@ -171,4 +171,4 @@ def comment(request, pk):
     else:
         res = {}
         res["PK"] = pk
-        return render(request, "OTT/comment.html", res)
+        return render(request, "OTT/view.html", res)

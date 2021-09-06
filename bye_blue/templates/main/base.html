@@ -5,7 +5,7 @@
     <head>
         <tilte></tilte>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="../../templates/main/style.css" >
+        <link rel="stylesheet" href="style.css" >
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -15,7 +15,7 @@
         
         <style>
           .background{
-            background-image: url(../../static/images/OTT.jpg);
+            background-image: url(../../static/images/base.jpg);
             background-size: cover;
             background-attachment: fixed; 
             background-repeat: no-repeat;
@@ -39,33 +39,34 @@
 
     <body class="background">
         <script type="text/javascript" src="static/bootstrap/js/bootstrap.js"></script>
-        <div style="height: 132px;"class="top">
-            <ul class="nav" style="margin-left: 40%;">
+        <div style="height: 132px;"class="top" >
+            <ul class="nav" style="margin-left :40%;">
               <li class="nav-item">
-                <a style="color: #7D757D;" class="nav-link" href="{% url 'HomeTraining:list' %}">Home-T</a>
+                <a style="color: #413141;" class="nav-link" href="{% url 'HomeTraining:list' %}">Home-T</a>
               </li>
                 <li class="nav-item">
-                  <a style="color: #7D757D;" class="nav-link" href="{% url 'OTT:list' %}">OTT</a>
+                  <a style="color: #413141;" class="nav-link" href="{% url 'OTT:list' %}">OTT</a>
                 </li>
                 <li class="nav-item">
-                  <a style="color: #7D757D;"class="nav-link" href="{% url 'online_class:index' %}">Oline_Class</a>
+                  <a style="color: #413141;"class="nav-link" href="{% url 'online_class:index' %}">Oline_Class</a>
                 </li>
                 <li class="nav-item">
-                  <a style="color: #7D757D;" class="nav-link" href="{% url 'mbti:index' %}">Mbti</a>
+                  <a style="color: #413141;" class="nav-link" href="{% url 'mbti:index' %}">Mbti</a>
                 </li>
-                
-                <button style= "margin-left: 300px;" class="btn btn-outline-secondary">
-                  <a style="color:#7D757D;" href="{% url 'account:login' %}">Log_in</a>
+                <p></p>
+              </ul>
+              <div style="width:auto; margin-left:80%">
+                <button  class="btn btn-outline-secondary">
+                  <a style="color:#413141;" href="{% url 'account:login' %}">Log_in</a>
                 </button>
-                <button style= "margin-left: 5px;" class="btn btn-outline-secondary">
-                  <a style="color:#7D757D;" href="{% url 'account:signup' %}">Sign_up</a>
+                <button class="btn btn-outline-secondary">
+                  <a style="color:#413141;" href="{% url 'account:signup' %}">Sign_up</a>
                 </button>
-                <button style= "margin-left: 5px;" class="btn btn-outline-secondary">
-                  <a style="color:#7D757D;" href="{% url 'account:logout' %}">Log_out</a>
+                <button class="btn btn-outline-secondary">
+                  <a style="color:#413141;" href="{% url 'account:logout' %}">Log_out</a>
                 </button>
-               
-                
-            </ul>
+                </div>
+            
             
             <br>
             
